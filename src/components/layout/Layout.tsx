@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import Sidebar from "./Sidebar";
+import VoipPanel from "./VoipPanel";
 
 interface LayoutProps {
   children: ReactNode;
@@ -12,6 +13,7 @@ export default function Layout({ children }: LayoutProps) {
       <main className="flex-1 overflow-y-auto">
         {children}
       </main>
+      <VoipPanel />
     </div>
   );
 }

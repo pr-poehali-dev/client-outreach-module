@@ -447,3 +447,323 @@
 [role="progressbar"] > div {
   background: linear-gradient(90deg, #7c3aed, #a855f7) !important;
 }
+
+/* ── VoIP Panel ── */
+.voip-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #059669, #10b981);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+  transition: all 0.2s;
+  z-index: 1000;
+}
+.voip-fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px rgba(16, 185, 129, 0.55);
+}
+.voip-fab--active {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.5);
+  animation: voip-pulse 2s infinite;
+}
+.voip-fab-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f43f5e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #0e1421;
+}
+.voip-fab-badge-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: white;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes voip-pulse {
+  0%,
+  100% {
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(139, 92, 246, 0.8);
+  }
+}
+
+.voip-panel {
+  position: fixed;
+  bottom: 90px;
+  right: 28px;
+  width: 300px;
+  background: #0e1421;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(139, 92, 246, 0.15);
+  z-index: 999;
+  overflow: hidden;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.animate-slide-up {
+  animation: slide-up 0.2s ease-out;
+}
+
+.voip-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 14px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.voip-logo-dot {
+  width: 8px;
+  height: 8px;
+  background: #a855f7;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #a855f7;
+}
+
+.voip-close-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.voip-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.voip-call-screen {
+  padding: 20px 16px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.voip-call-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed, #06b6d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+}
+
+.voip-call-status-text {
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 6px;
+  font-family: "Golos Text", sans-serif;
+}
+
+.voip-action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  font-family: "Golos Text", sans-serif;
+  cursor: pointer;
+  transition: all 0.15s;
+  min-width: 80px;
+}
+.voip-action-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+.voip-action-btn--active {
+  background: rgba(244, 63, 94, 0.15);
+  border-color: rgba(244, 63, 94, 0.25);
+  color: #f87171;
+}
+
+.voip-end-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #be123c, #f43f5e);
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
+  transition: all 0.2s;
+}
+.voip-end-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 22px rgba(244, 63, 94, 0.55);
+}
+
+.voip-digit-btn {
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Golos Text", sans-serif;
+  cursor: pointer;
+  transition: all 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.voip-digit-btn:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+.voip-digit-btn:active {
+  transform: scale(0.94);
+}
+
+.voip-call-start-btn {
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #059669, #10b981);
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Golos Text", sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+.voip-call-start-btn:hover {
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
+}
+.voip-call-start-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ── Flow Builder (Scenarios) ── */
+.flow-canvas {
+  position: relative;
+  overflow: auto;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+  background-color: #070b12;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.flow-node {
+  position: absolute;
+  min-width: 160px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0e1421;
+  cursor: grab;
+  user-select: none;
+  transition:
+    box-shadow 0.2s,
+    border-color 0.2s;
+}
+.flow-node:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+}
+.flow-node--selected {
+  border-color: rgba(139, 92, 246, 0.6) !important;
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.25) !important;
+}
+
+.flow-node-header {
+  padding: 10px 12px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.flow-node-body {
+  padding: 8px 12px 10px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.5;
+}
+
+.flow-port {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid;
+  background: #0e1421;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.flow-port:hover {
+  transform: scale(1.4);
+}
+.flow-port--out {
+  right: -6px;
+}
+.flow-port--in {
+  left: -6px;
+}
+
+.flow-edge {
+  position: absolute;
+  pointer-events: none;
+  overflow: visible;
+}
